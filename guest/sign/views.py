@@ -29,5 +29,7 @@ def login_action(request):
 
 #发布会管理
 def event_manage(request):
+    #读取cookie名为“user"的值
     username = request.COOKIES.get('user','') #读取浏览器cookie
+
     return render(request,"event_manage.html",{"user":username})
