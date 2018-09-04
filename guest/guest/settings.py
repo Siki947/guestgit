@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sign',#添加sign应用
+    'bootstrap3'
 ]
 
 MIDDLEWARE = [
@@ -45,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfResponseMiddleware'
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -76,9 +78,25 @@ WSGI_APPLICATION = 'guest.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+       #'ENGINE': 'django.db.backends.sqlite3',
+       # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #驱动
+        'ENGINE':'django.db.backends.mysql',
+        #主机地址
+        'HOST':'127.0.0.1',
+        #端口号
+        'PORT':'3306',
+        #数据库名称
+        'NAME':'guest',
+        #登录用户名
+        'USER':'root',
+        #登录密码
+        'PASSWORD':'jsq159',
+        'OPTIONS':{
+            'init_command':"SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
+
 }
 
 
@@ -121,3 +139,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
